@@ -11,3 +11,8 @@ test('multiplication', function () {
     $product = $five->times(3);
     expect($product->amount)->toBe(15);
 });
+
+test('equality', function () {
+    expect(new Dollar(5)->equals(new Dollar(5)))->toBeTrue();
+    expect(new Dollar(5)->equals(new Dollar(6)))->toBeFalse();
+});

@@ -1,0 +1,19 @@
+x-logging: &base-logging
+  driver: 'json-file'
+  options:
+    max-size: '10m'
+    max-file: '5'
+services:
+  workspace:
+    init: true
+    build:
+      context: ./dockerfiles/php
+      target: dev
+    volumes:
+      - history:/usr/local/history
+      - vscext:/home/dev/.vscode-server/extensions
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging: *base-logging
+volumes:
+  history:
+  vscext:

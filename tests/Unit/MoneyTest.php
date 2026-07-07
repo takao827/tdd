@@ -21,3 +21,8 @@ test('equality', function () {
     expect(Money::franc(5)->equals(Money::franc(6)))->toBeFalse();
     expect(Money::dollar(5)->equals(Money::franc(5)))->toBeFalse();
 });
+
+test('currency', function () {
+    expect(Money::dollar(1)->currency())->toBe('USD');
+    expect(Money::franc(1)->currency())->toBe('CHF');
+});

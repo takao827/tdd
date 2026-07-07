@@ -20,4 +20,5 @@ test('equality', function () {
     expect(new Dollar(5)->equals(new Dollar(6)))->toBeFalse();
     expect(new Franc(5)->equals(new Franc(5)))->toBeTrue();
     expect(new Franc(5)->equals(new Franc(6)))->toBeFalse();
+    expect(new Dollar(5)->equals(new Franc(5)))->toBeFalse();
 });

@@ -8,6 +8,12 @@ abstract class Money
 
     protected string $currency;
 
+    public function __construct(int $amount, string $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
     abstract function times(int $multiplier): Money;
 
     public function currency(): string
@@ -23,11 +29,11 @@ abstract class Money
 
     public static function dollar(int $amount): Dollar
     {
-        return new Dollar($amount);
+        return new Dollar($amount, 'USD');
     }
 
     public static function franc(int $amount): Franc
     {
-        return new Franc($amount);
+        return new Franc($amount, 'CHF');
     }
 }

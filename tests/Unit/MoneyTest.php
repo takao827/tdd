@@ -2,6 +2,7 @@
 
 use App\Money\Bank;
 use App\Money\Money;
+use App\Money\Sum;
 
 test('multiplication', function () {
     $five = Money::dollar(5);
@@ -26,4 +27,17 @@ test('simple addition', function () {
     $bank = new Bank();
     $reduced = $bank->reduce($sum, 'USD');
     expect($reduced)->toEqual(Money::dollar(10));
+});
+
+test('plus returns sum', function () {
+    $sum = new Sum(Money::dollar(3), Money::dollar(4));
+    $bank = new Bank();
+    $result = $bank->reduce($sum, 'USD');
+    expect($result)->toEqual(Money::dollar(7));
+});
+
+test('reduce money', function () {
+    $bank = new Bank();
+    $result = $bank->reduce(Money::dollar(1), 'USD');
+    expect($result)->toEqual(Money::dollar(1));
 });

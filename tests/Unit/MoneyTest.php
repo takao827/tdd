@@ -52,3 +52,12 @@ test('reduce money different currency', function () {
 test('identity rate', function () {
     expect(new Bank()->rate('USD', 'USD'))->toBe(1);
 });
+
+test('mixed addition', function () {
+    $fiveBucks = Money::dollar(5);
+    $tenFrancs = Money::franc(10);
+    $bank = new Bank();
+    $bank->addRate('CHF', 'USD', 2);
+    $result = $bank->reduce($fiveBucks->plus($tenFrancs), 'USD');
+    expect($result)->toEqual(Money::dollar(10));
+});

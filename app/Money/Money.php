@@ -2,7 +2,7 @@
 
 namespace App\Money;
 
-class Money
+class Money implements Expression
 {
     protected int $amount;
 
@@ -19,7 +19,7 @@ class Money
         return new Money($this->amount * $multiplier, $this->currency);
     }
 
-    public function plus(Money $addend)
+    public function plus(Money $addend): Expression
     {
         return new Money($this->amount + $addend->amount, $this->currency);
     }

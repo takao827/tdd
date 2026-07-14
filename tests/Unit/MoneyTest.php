@@ -1,5 +1,6 @@
 <?php
 
+use App\Money\Bank;
 use App\Money\Money;
 
 test('multiplication', function () {
@@ -20,6 +21,9 @@ test('currency', function () {
 });
 
 test('simple addition', function () {
-    $sum = Money::dollar(5)->plus(Money::dollar(5));
-    expect($sum)->toEqual(Money::dollar(10));
+    $five = Money::dollar(5);
+    $sum = $five->plus($five);
+    $bank = new Bank();
+    $reduced = $bank->reduce($sum, 'USD');
+    expect($reduced)->toEqual(Money::dollar(10));
 });

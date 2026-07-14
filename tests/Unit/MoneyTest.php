@@ -41,3 +41,10 @@ test('reduce money', function () {
     $result = $bank->reduce(Money::dollar(1), 'USD');
     expect($result)->toEqual(Money::dollar(1));
 });
+
+test('reduce money different currency', function () {
+    $bank = new Bank();
+    $bank->addRate('CHF', 'USD', 2);
+    $result = $bank->reduce(Money::franc(2), 'USD');
+    expect($result)->toEqual(Money::dollar(1));
+});

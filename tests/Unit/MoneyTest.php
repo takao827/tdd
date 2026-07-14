@@ -48,3 +48,7 @@ test('reduce money different currency', function () {
     $result = $bank->reduce(Money::franc(2), 'USD');
     expect($result)->toEqual(Money::dollar(1));
 });
+
+test('identity rate', function () {
+    expect(new Bank()->rate('USD', 'USD'))->toBe(1);
+});

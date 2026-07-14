@@ -71,3 +71,13 @@ test('sum plus money', function () {
     $result = $sum->reduce($bank, 'USD');
     expect($result)->toEqual(Money::dollar(15));
 });
+
+test('sum times', function () {
+    $fiveBucks = Money::dollar(5);
+    $tenFrancs = Money::franc(10);
+    $bank = new Bank();
+    $bank->addRate('CHF', 'USD', 2);
+    $sum = new Sum($fiveBucks, $tenFrancs)->times(2);
+    $result = $sum->reduce($bank, 'USD');
+    expect($result)->toEqual(Money::dollar(20));
+});

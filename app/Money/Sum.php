@@ -23,6 +23,6 @@ class Sum implements Expression
 
     public function plus(Expression $addend): Expression
     {
-        return new Sum($this, $addend);; // TODO
+        return new Sum($this, $addend);
     }
 }
